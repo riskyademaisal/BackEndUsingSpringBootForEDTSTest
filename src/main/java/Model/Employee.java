@@ -11,8 +11,6 @@ import javax.persistence.Table;
 @Table(name="employee")
 public class Employee {
    
-        
-   
 	@Id
 	private BigInteger id;
 	private String name;
@@ -51,32 +49,16 @@ public class Employee {
     public void setGrade(String grade) {
         this.grade = grade;
     }
-
+    
     public BigInteger getTotalBonus() {
-        
-        String salaryString = this.salary != null ? this.salary.toString():"0";
-        int bonus = 0;
-        if("1".equalsIgnoreCase(this.grade))
-        {
-           bonus =  Integer.parseInt(salaryString) + (Integer.parseInt(salaryString) * 10/100);
-        }
-        else if("2".equalsIgnoreCase(this.grade)){
-           bonus =  Integer.parseInt(salaryString) + (Integer.parseInt(salaryString) * 6/100); 
-        }
-        else if("3".equalsIgnoreCase(this.grade)){
-           bonus =  Integer.parseInt(salaryString) + (Integer.parseInt(salaryString) * 3/100); 
-        }
-       
-        String bonusFinal = "" + bonus;
-        totalBonus = new BigInteger(bonusFinal);
-            
         return totalBonus;
     }
 
     public void setTotalBonus(BigInteger totalBonus) {
+        
         this.totalBonus = totalBonus;
     }
 
-        
+   
         
 }

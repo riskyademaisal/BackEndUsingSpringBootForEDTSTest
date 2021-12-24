@@ -32,6 +32,7 @@ public class Controller {
 	
 	@PostMapping("save-employee")
 	public boolean saveEmployee(@RequestBody Employee employee) {
+                 calculateBonus(employee);
 		 return employeeservice.saveEmployee(employee);
 		
 	}
@@ -58,6 +59,27 @@ public class Controller {
 	@PostMapping("update-employee/{id}")
 	public boolean updateEmployee(@RequestBody Employee employee,@PathVariable("id") BigInteger id) {
 		employee.setId(id);
+                calculateBonus(employee);
 		return employeeservice.updateEmployee(employee);
 	}
+        
+       
+        private void calculateBonus(Employee employee)
+     {
+         String salaryString = employee.getSalary() != null ? employee.getSalary().toString():"0";
+        int bonus = 0;
+        if("1".equalsIgnoreCase(employee.getGrade()))
+        {
+           bonus =  Integer.parseInt(salaryString) + (Integer.parseInt(salaryString) * 10/100);
+        }
+        else if("2".equalsIgnoreCase(employee.getGrade())){
+           bonus =  Integer.parseInt(salaryString) + (Integer.parseInt(salaryString) * 6/100); 
+        }
+        else if("3".equalsIgnoreCase(employee.getGrade())){
+           bonus =  Integer.parseInt(salaryString) + (Integer.parseInt(salaryString) * 3/100); 
+        }
+       System.out.print(bonus);
+        String bonusFinal = "" + bonus;
+        employee.setTotalBonus(new BigInteger(bonusFinal));
+    }
 }
