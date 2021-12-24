@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.main</groupId>
-	<artifactId>EmployeeEDTSTest</artifactId>
+	<artifactId>BackEndUsingSpringBootForEDTSTest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>EmployeeEDTSTest</name>
+	<name>BackEndUsingSpringBootForEDTSTest</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
